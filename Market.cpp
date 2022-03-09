@@ -10,19 +10,20 @@
 #include <iostream>
 using namespace std;
 
-
+/// Default constructor
 Market::Market()
 {
     this->year = 0;
 }
 
+///
 void Market::CreateNewFarms()
 {
     cout << "----Creating new farms----" << endl;
 
     bool flag = true;
     int num1, num2, num3;
-    ///// Adding Cow Farms.
+    /// Searching for exception while recivieing input from the user.
     while (flag) {
         flag = false;
         try
@@ -59,6 +60,7 @@ void Market::CreateNewFarms()
         }
         catch (ChickExp &ec) { cout << ec.what() << endl; continue;}
     }
+    ///// Adding Cow Farms.
     for (int i = 0; i < num1; ++i) {
         this->Farms.push_back(new CowFarm);
     }
@@ -75,14 +77,14 @@ void Market::CreateNewFarms()
     }
 
     cout << "----Adding new farms to market----" << endl;
-
+    //// Using all types of combinations to add the correct farm into the other farm Customer list.(Polymorphism takes place).
     for (int i = 0; i < Farms.size(); ++i) {
         for (int j = 0; j < i; ++j) {
             Farms[i]->AddPeasantsChick(Farms[j]);
             Farms[j]->AddPeasantsSheep(Farms[i]);
+            
             Farms[j]->AddPeasantsCow(Farms[i]);
             Farms[j]->AddPeasantsChick(Farms[i]);
-
 
             Farms[i]->AddPeasantsSheep(Farms[j]);
             Farms[i]->AddPeasantsCow(Farms[j]);
@@ -92,6 +94,7 @@ void Market::CreateNewFarms()
 
 }
 
+/// Using 2 functions on ALL farms that will buy new Animals and sell products to customers.
 void Market::TradingDay()
 {
     cout << "----Begin Market----" << endl;
@@ -106,6 +109,7 @@ void Market::TradingDay()
     }
 }
 
+/// increaseing the age of all animals in all farms by 1 & each farm gains 10$ money & each farm get products by their age of animals.
 void Market::nextYear()
 {
     CreateNewFarms();
@@ -122,6 +126,7 @@ void Market::nextYear()
     this->year += 1;
 }
 
+/// Allowing to use NextYear Function a couple of times in a row (the user input how many times).
 void Market::fastForwardYears()
 {
     int num;
@@ -144,6 +149,7 @@ void Market::fastForwardYears()
 
 }
 
+/// Print the whole farm that are in the market.
 void Market::printMarketFarms()
 {
     cout << "----Market Farms----" << "\n";
@@ -155,6 +161,7 @@ void Market::printMarketFarms()
 
 int Market::getYear() const {return this->year;}
 
+/// Destructor
 Market::~Market()
 {
     for (vector<Farm*>::iterator it = this->Farms.begin() ; it != Farms.end() ; ++it)
