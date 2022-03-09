@@ -57,21 +57,4 @@ public:
 };
 
 
-
-
-
-
-
 #endif //HW4_FARM_H
-//{
-//ID ++;
-//Money=10;
-//Products=animalType->ProductType();
-//numOfProducts = 0;
-//numOfAnimals=3;
-//}
-//int Money;
-//Animal* animalType;
-//std::string Products;
-//int numOfAnimals;
-//int numOfProducts;
