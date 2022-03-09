@@ -70,7 +70,7 @@ bool Farm::PeasantsContains(int id)
     return false;
 }
 
-/// Distractor
+/// Destructor
 Farm::~Farm()
 {
     for (vector<Animal*>::iterator it = this->Animals.begin() ; it != Animals.end() ; ++it)
