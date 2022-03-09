@@ -4,6 +4,7 @@
 #include "ChickenFarm.h"
 #include "CowFarm.h"
 
+/// Default constructor
 CowFarm::CowFarm()
 {
     this->numOfAnimals = 3;
@@ -13,6 +14,7 @@ CowFarm::CowFarm()
     this->Products = "Milk";
 }
 
+/// Using all the money the specific farm has to buy as much as much animals as possible.
 void CowFarm::BuyAnimals()
 {
     int counter = 0;
@@ -30,6 +32,7 @@ void CowFarm::BuyAnimals()
     }
 }
 
+/// Allowing the farm that OBSERVES this specific Farm to buy from it products until they are out of money.
 void CowFarm::BuyProducts()
 {
     int flag = 0;
@@ -55,7 +58,7 @@ void CowFarm::BuyProducts()
 
 }
 
-
+/// Printing the farm Data.
 void CowFarm::PrintFarm()
 {
     cout << "Farm Id: " << this->ID << ", type: Cow farm, Money: " << this->Money << ", Animals: "
@@ -63,6 +66,7 @@ void CowFarm::PrintFarm()
          << "], Eggs[" << this->Egg << "]" << endl;
 }
 
+/// Increaseing the number of products by calculation of all animals by thier age.
 void CowFarm::UpdateProd()
 {
     for (int i = 0; i < this->Animals.size(); ++i)
@@ -72,7 +76,7 @@ void CowFarm::UpdateProd()
 }
 
 
-//
+/// Polymorphism
 bool CowFarm::BuyFromChick() {return true;}
 bool CowFarm::BuyFromSheep() {return false;}
 bool CowFarm::BuyFromCow() {return false;}
