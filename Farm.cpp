@@ -14,11 +14,13 @@ Farm ::Farm()
     this->Egg = 0;
 }
 
+/// Increases the whole farm products by it's Age of animals.
 void Farm::productProductivity()
 {
     this->UpdateProd();
 }
 
+/// Increaseing the age of all animals in a specific farm by 1 & If an animal has got to it's death age we remove it.
 void Farm::AgeInc()
 {
     for (int i = 0; i < this->Animals.size(); ++i)
@@ -33,6 +35,8 @@ void Farm::AgeInc()
         }
     }
 }
+
+//// Getters & Setters.
 
 int Farm::getMoney() const {return this->Money;}
 
@@ -66,12 +70,11 @@ bool Farm::PeasantsContains(int id)
     return false;
 }
 
+/// Distractor
 Farm::~Farm()
 {
-
     for (vector<Animal*>::iterator it = this->Animals.begin() ; it != Animals.end() ; ++it)
     {
-//        Animals.erase(it);
         delete *it;
     }
 
