@@ -4,9 +4,9 @@
 
 #include "ChickenFarm.h"
 #include "SheepFarm.h"
-//#include "Sheep.h"
 
 
+/// Default constructor
 ChickenFarm::ChickenFarm()
 {
 
@@ -19,6 +19,7 @@ ChickenFarm::ChickenFarm()
 
 }
 
+/// Allow the farm to increase the number of animals by buying using money.
 void ChickenFarm:: BuyAnimals()
 {
     int counter = 0;
@@ -36,6 +37,7 @@ void ChickenFarm:: BuyAnimals()
     }
 }
 
+/// Allowing the farm that OBSERVES this specific Farm to buy from it products until they are out of money.
 void ChickenFarm::BuyProducts()
 {
     int flag = 0;
@@ -67,6 +69,7 @@ void ChickenFarm::PrintFarm()
          << "], Eggs[" << this->Egg << "]" << endl;
 }
 
+/// increaseing the amount of products by the calculation of all animals by their age 
 void ChickenFarm::UpdateProd()
 {
     for (int i = 0; i < this->Animals.size(); ++i)
@@ -75,11 +78,13 @@ void ChickenFarm::UpdateProd()
     }
 }
 
-
+/// Polymorphism
 bool ChickenFarm::BuyFromChick() {return false;}
 bool ChickenFarm::BuyFromSheep() {return true;}
 bool ChickenFarm::BuyFromCow() {return false;}
 
+
+/// Adding the relevant Customers into a STL Vector of Peasants that are Customers. 
 void ChickenFarm::AddPeasantsCow(Farm* farm)
 {
     if (!(PeasantsContains(farm->getID())) && farm->BuyFromChick() )
@@ -88,7 +93,7 @@ void ChickenFarm::AddPeasantsCow(Farm* farm)
         cout << "Chicken farm(" << this->ID << ") Added Cow farm(" << farm->getID() << ") to his client list" << endl;
     }
 }
-
+/// Polymorphism
 void ChickenFarm::AddPeasantsSheep(Farm* farm){}
 
 void ChickenFarm::AddPeasantsChick(Farm* farm) {}
